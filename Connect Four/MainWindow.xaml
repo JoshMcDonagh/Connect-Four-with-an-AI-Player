@@ -5,8 +5,68 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Connect_Four"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        Title="Connect Four" Height="548.63" Width="457.26" ResizeMode="CanMinimize">
+    <Grid Background="#FFB5E4FF">
+        <Grid HorizontalAlignment="Left" Height="388" Margin="10,10,0,0" VerticalAlignment="Top" Width="431">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="1"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="2"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="3"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="4"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="5"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="1" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="2" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="3" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="4" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="5" Grid.Column="1"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Column="2"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="1" Grid.Column="2"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="2" Grid.Column="2"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="3" Grid.Column="2"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="4" Grid.Column="2"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="5" Grid.Column="2"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Column="3"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="1" Grid.Column="3"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="2" Grid.Column="3"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="3" Grid.Column="3"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="4" Grid.Column="3"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="5" Grid.Column="3"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Column="4"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="1" Grid.Column="4"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="2" Grid.Column="4"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="3" Grid.Column="4"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="4" Grid.Column="4"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10,10,11,10" Grid.Row="5" Grid.Column="4"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Column="5"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="1" Grid.Column="5"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="2" Grid.Column="5"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="3" Grid.Column="5"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="4" Grid.Column="5"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="5" Grid.Column="5"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Column="6"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="1" Grid.Column="6"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="2" Grid.Column="6"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="3" Grid.Column="6"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="4" Grid.Column="6"/>
+            <Ellipse Fill="#FFF4F4F5" Stroke="Black" Margin="10" Grid.Row="5" Grid.Column="6"/>
+        </Grid>
     </Grid>
 </Window>
