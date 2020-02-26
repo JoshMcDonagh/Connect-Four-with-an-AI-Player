@@ -1,18 +1,25 @@
-﻿using Connect_Four.Source.Players;
+﻿using Connect_Four.Source.BoardUtilities.Discs;
+using Connect_Four.Source.Players;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Shapes;
 
 namespace Connect_Four.Source
 {
     public class Board
     {
+        private const int _columns = 7;
+        private const int _rows = 6;
+        
         private IPlayer _player1;
         private IPlayer _player2;
         private IPlayer _currentPlayer = null;
         public IPlayer CurrentPlayer => _currentPlayer;
+
+        private DiscGrid _discs;
 
         public Board(IPlayer player1, IPlayer player2)
         {
@@ -39,5 +46,7 @@ namespace Connect_Four.Source
         {
             AlertPlayers();
         }
+
+        public void SetGUIBoard(Ellipse[][] guiDiscs) => _discs = new DiscGrid(_columns, _rows, guiDiscs);
     }
 }
