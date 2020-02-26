@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Connect_Four.Source;
+using Connect_Four.Source.BoardUtilities.Discs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,10 @@ namespace Connect_Four
         public MainWindow()
         {
             InitializeComponent();
+            DiscGrid grid = new DiscGrid(7, 6, guiGrid);
+            grid.Get(6, 5).SetClickable();
+            grid.Get(5, 5).SetClickable();
+            grid.Get(5, 5).SetNotClickable();
         }
     }
 }

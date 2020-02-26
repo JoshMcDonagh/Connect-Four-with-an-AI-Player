@@ -33,6 +33,17 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             SetGuiColour(_holder.Colour);
         }
 
+        public void SetClickable()
+        {
+            _guiDisc.Stroke = new SolidColorBrush(Colors.Purple);
+            _guiDisc.StrokeThickness = 5;
+        }
+
+        public void SetNotClickable()
+        {
+            _guiDisc.Stroke = null;
+        }
+
         private void SetGuiColour(Color colour) => _guiDisc.Fill = new SolidColorBrush(colour);
     }
 }

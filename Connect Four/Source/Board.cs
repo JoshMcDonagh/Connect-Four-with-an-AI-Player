@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Shapes;
 
 namespace Connect_Four.Source
@@ -47,6 +48,16 @@ namespace Connect_Four.Source
             AlertPlayers();
         }
 
-        public void SetGUIBoard(Ellipse[][] guiDiscs) => _discs = new DiscGrid(_columns, _rows, guiDiscs);
+        public void SetGUIBoard(Grid guiGrid) => _discs = new DiscGrid(_columns, _rows, guiGrid);
+
+        public void MakeClickable()
+        {
+            Disc[] discs = _discs.GetAvailable();
+
+            foreach (Disc disc in discs)
+            {
+
+            }
+        }
     }
 }
