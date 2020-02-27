@@ -1,5 +1,6 @@
 ﻿using Connect_Four.Source;
 using Connect_Four.Source.BoardUtilities.Discs;
+using Connect_Four.Source.Players;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,10 +26,14 @@ namespace Connect_Four
         public MainWindow()
         {
             InitializeComponent();
-            DiscGrid grid = new DiscGrid(7, 6, guiGrid);
-            grid.Get(6, 5).SetClickable();
-            grid.Get(5, 5).SetClickable();
-            grid.Get(5, 5).SetNotClickable();
+            NewGame();
+        }
+
+        private void NewGame()
+        {
+            GameController gameController = new GameController();
+            gameController.Initialise(new HumanPlayer("Player 1", Colors.Red), new HumanPlayer("Player 2", Colors.Yellow), guiGrid);
+            gameController.EnableUserInput();
         }
     }
 }

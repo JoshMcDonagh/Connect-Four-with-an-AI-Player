@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Connect_Four.Source
@@ -31,33 +32,45 @@ namespace Connect_Four.Source
 
         private void UpdateCurrentPlayer(IPlayer player)
         {
-            if (_currentPlayer == player)
+            if (CurrentPlayer == player)
                 throw new NotImplementedException();
 
             _currentPlayer = player;
+            CurrentPlayer.Update();
         }
 
-        private void AlertPlayers()
+        private void SwitchCurrentPlayer()
         {
-            _player1.Update();
-            _player2.Update();
+            if (CurrentPlayer == _player1)
+                UpdateCurrentPlayer(_player2);
+            else
+                UpdateCurrentPlayer(_player1);
         }
 
-        public void Start()
-        {
-            AlertPlayers();
-        }
+        public void SetGUIBoard(Grid guiGrid) => _discs = new DiscGrid(_columns, _rows, guiGrid, this);
 
-        public void SetGUIBoard(Grid guiGrid) => _discs = new DiscGrid(_columns, _rows, guiGrid);
-
-        public void MakeClickable()
+        public void MakeDiscsClickable()
         {
             Disc[] discs = _discs.GetAvailable();
 
             foreach (Disc disc in discs)
-            {
+                disc.SetClickable(_currentPlayer.Colour);
+        }
 
-            }
+        public void MakeDiscsNotClickable()
+        {
+            Disc[] discs = _discs.GetAvailable();
+
+            foreach (Disc disc in discs)
+                disc.SetNotClickable();
+        }
+
+        public void DiscSelected(Disc disc)
+        {
+            if (CurrentPlayer.IsHuman)
+                MakeDiscsNotClickable();
+
+            SwitchCurrentPlayer();
         }
     }
 }

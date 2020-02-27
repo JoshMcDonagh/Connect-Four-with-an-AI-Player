@@ -9,8 +9,8 @@ namespace Connect_Four.Source.Players
 {
     public interface IPlayer
     {
+        string Name { get; }
         Color Colour { get; }
-
         bool IsHuman { get; }
 
         void Update();
