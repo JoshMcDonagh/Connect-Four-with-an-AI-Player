@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connect_Four.Source.BoardUtilities.Discs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,5 +15,6 @@ namespace Connect_Four.Source.Players
         bool IsHuman { get; }
 
         void Update();
+        void SelectDisc(Disc[] discs);
     }
 }
