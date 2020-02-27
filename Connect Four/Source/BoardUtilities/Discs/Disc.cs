@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows.Media;
@@ -23,14 +24,14 @@ namespace Connect_Four.Source.BoardUtilities.Discs
 
         private bool _isClickable = false;
 
-        private Board _board;
+        private PlayerController _players;
 
-        public Disc(Ellipse guiDisc, Board board)
+        public Disc(Ellipse guiDisc, PlayerController players)
         {
             _guiDisc = guiDisc;
             SetGuiColour(Colors.SlateGray);
             guiDisc.MouseUp += MouseClick;
-            _board = board;
+            _players = players;
         }
 
         public void Select(IPlayer holder)
@@ -57,10 +58,10 @@ namespace Connect_Four.Source.BoardUtilities.Discs
 
         private void MouseClick(object sender, MouseButtonEventArgs e)
         {
-            if (_isClickable)
+            if (_isClickable && _players.CurrentPlayer.IsHuman)
             {
-                Select(_board.CurrentPlayer);
-                _board.DiscSelected(this);
+                Select(_players.CurrentPlayer);
+                ((HumanPlayer)_players.CurrentPlayer).SetSelectedDisc((Disc)sender);
             }
         }
     }

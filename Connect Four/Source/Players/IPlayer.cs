@@ -14,7 +14,6 @@ namespace Connect_Four.Source.Players
         Color Colour { get; }
         bool IsHuman { get; }
 
-        void Update();
-        void SelectDisc(Disc[] discs);
+        Disc SelectDisc(Disc[] discs);
     }
 }

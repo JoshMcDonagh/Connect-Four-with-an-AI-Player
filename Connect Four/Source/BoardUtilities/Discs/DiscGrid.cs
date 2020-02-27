@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Connect_Four.Source.Players;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,7 +16,7 @@ namespace Connect_Four.Source.BoardUtilities.Discs
 
         private Disc[][] _discs;
 
-        public DiscGrid(int columns, int rows, Grid guiGrid, Board board)
+        public DiscGrid(int columns, int rows, Grid guiGrid, PlayerController players)
         {
             _columns = columns;
             _rows = rows;
@@ -24,7 +25,7 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             for (int i = 0; i < _discs.Length; i++) _discs[i] = new Disc[_columns];
 
             InitialiseGuiGrid(guiGrid);
-            MakeDiscs(guiGrid, board);
+            MakeDiscs(guiGrid, players);
         }
 
         public Disc Get(int column, int row) => _discs[row][column];
@@ -61,10 +62,10 @@ namespace Connect_Four.Source.BoardUtilities.Discs
                 guiGrid.RowDefinitions.Add(new RowDefinition());
         }
 
-        private void MakeDiscs(Grid guiGrid, Board board)
+        private void MakeDiscs(Grid guiGrid, PlayerController players)
         {
             Ellipse[][] discs = MakeGuiDiscs(guiGrid);
-            MakeDiscData(discs, board);
+            MakeDiscData(discs, players);
         }
 
         private Ellipse MakeGuiEllipse(int column, int row, Grid guiGrid)
@@ -105,10 +106,10 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             return discs;
         }
 
-        private void MakeDiscData(Ellipse[][] guiDiscs, Board board)
+        private void MakeDiscData(Ellipse[][] guiDiscs, PlayerController players)
         {
             for (int i = 0; i < _rows; i++)
-                for (int j = 0; j < _columns; j++) _discs[i][j] = new Disc(guiDiscs[i][j], board);
+                for (int j = 0; j < _columns; j++) _discs[i][j] = new Disc(guiDiscs[i][j], players);
         }
     }
 }

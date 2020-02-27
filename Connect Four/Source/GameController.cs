@@ -10,19 +10,14 @@ namespace Connect_Four.Source
 {
     class GameController
     {
-        private IPlayer _player1;
-        private IPlayer _player2;
-        private Board _board;
+        private PlayerController _players;
+        private GridController _board;
 
-        public void SetPlayers(IPlayer player1, IPlayer player2)
-        {
-            _player1 = player1;
-            _player2 = player2;
-        }
+        public void SetPlayers(IPlayer player1, IPlayer player2) => _players = new PlayerController(player1, player2);
 
-        public void InitialiseBoard() => _board = new Board(_player1, _player2);
+        public void InitialiseBoard() => _board = new GridController();
 
-        public void SetGUIGrid(Grid guiGrid) => _board.SetGUIBoard(guiGrid);
+        public void SetGUIGrid(Grid guiGrid) => _board.SetGUIBoard(guiGrid, _players);
 
         public void Initialise(IPlayer player1, IPlayer player2, Grid guiGrid)
         {
@@ -31,14 +26,13 @@ namespace Connect_Four.Source
             SetGUIGrid(guiGrid);
         }
 
-        public void EnableUserInput()
+        public void Play()
         {
-            _board.MakeDiscsClickable();
-        }
-
-        public void DisableUserInput()
-        {
-            _board.MakeDiscsNotClickable();
+            while (true)
+            {
+                _players.CurrentPlayer.SelectDisc(_board.GetAvailableDisks());
+                _players.SwitchCurrentPlayer();
+            }
         }
     }
 }

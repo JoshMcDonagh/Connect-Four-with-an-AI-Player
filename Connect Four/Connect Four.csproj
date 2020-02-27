@@ -55,12 +55,13 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Source\Board.cs" />
+    <Compile Include="Source\GridController.cs" />
     <Compile Include="Source\BoardUtilities\Discs\Disc.cs" />
     <Compile Include="Source\BoardUtilities\Discs\DiscGrid.cs" />
     <Compile Include="Source\GameController.cs" />
     <Compile Include="Source\Players\HumanPlayer.cs" />
     <Compile Include="Source\Players\IPlayer.cs" />
+    <Compile Include="Source\Players\PlayerController.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

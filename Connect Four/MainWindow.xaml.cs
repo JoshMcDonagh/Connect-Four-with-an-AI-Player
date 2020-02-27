@@ -33,7 +33,7 @@ namespace Connect_Four
         {
             GameController gameController = new GameController();
             gameController.Initialise(new HumanPlayer("Player 1", Colors.Red), new HumanPlayer("Player 2", Colors.Yellow), guiGrid);
-            gameController.EnableUserInput();
+            gameController.Play();
         }
     }
 }
