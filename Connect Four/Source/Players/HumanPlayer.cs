@@ -19,8 +19,14 @@ namespace Connect_Four.Source.Players
 
         public bool IsHuman => true;
 
-        private Disc _selectedDisc = null;
-        private Mutex _mutex = new Mutex();
+        private Disc[] _discCache;
+
+        private GameController _gameController;
+        public GameController GameController
+        {
+            private get => _gameController;
+            set => _gameController = value;
+        }
 
         public HumanPlayer(string name, Color colour)
         {
@@ -30,23 +36,18 @@ namespace Connect_Four.Source.Players
 
         public void SetSelectedDisc(Disc disc)
         {
-            _selectedDisc = disc;
-            _mutex.ReleaseMutex();
+            MakeDiscsNotClickable(_discCache);
+            GameController.SubmitDisk(disc);
         }
 
-        public Disc SelectDisc(Disc[] discs)
+        public void SelectDisc(Disc[] discs)
         {
+            _discCache = discs;
             MakeDiscsClickable(discs);
-            Disc selectedDisc = WaitUntilDiscClicked();
-            MakeDiscsNotClickable(discs);
-            ResetSelectedDisc();
-
-            return selectedDisc;
         } 
         
         private void MakeDiscsClickable(Disc[] discs)
         {
-            _mutex.WaitOne();
             foreach (Disc disc in discs)
                 disc.SetClickable(_colour);
         }
@@ -56,14 +57,5 @@ namespace Connect_Four.Source.Players
             foreach (Disc disc in discs)
                 disc.SetNotClickable();
         }
-
-        private Disc WaitUntilDiscClicked()
-        {
-            _mutex.WaitOne();
-            while (_selectedDisc == null) ;
-            return _selectedDisc;
-        }
-
-        private void ResetSelectedDisc() => _selectedDisc = null;
     }
 }

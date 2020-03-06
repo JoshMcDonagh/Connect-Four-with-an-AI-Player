@@ -13,7 +13,10 @@ namespace Connect_Four.Source.Players
         string Name { get; }
         Color Colour { get; }
         bool IsHuman { get; }
+        GameController GameController { set; }
 
-        Disc SelectDisc(Disc[] discs);
+        void SelectDisc(Disc[] discs);
+
+        void SetSelectedDisc(Disc disc);
     }
 }

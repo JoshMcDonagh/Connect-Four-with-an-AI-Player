@@ -61,7 +61,7 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             if (_isClickable && _players.CurrentPlayer.IsHuman)
             {
                 Select(_players.CurrentPlayer);
-                ((HumanPlayer)_players.CurrentPlayer).SetSelectedDisc((Disc)sender);
+                ((HumanPlayer)_players.CurrentPlayer).SetSelectedDisc(this);
             }
         }
     }
