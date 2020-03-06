@@ -25,11 +25,17 @@ namespace Connect_Four.Source.BoardUtilities.Discs
         private bool _isClickable = false;
 
         private PlayerController _players;
+        private DiscGrid _grid;
 
-        public Disc(Ellipse guiDisc, PlayerController players)
+        private int _column;
+        private static System.Timers.Timer _delayTimer;
+
+        public Disc(int column, Ellipse guiDisc, PlayerController players, DiscGrid grid)
         {
+            _column = column;
             _guiDisc = guiDisc;
-            SetGuiColour(Colors.SlateGray);
+            _grid = grid;
+            SetDefaultGuiColour();
             guiDisc.MouseUp += MouseClick;
             _players = players;
         }
@@ -38,7 +44,7 @@ namespace Connect_Four.Source.BoardUtilities.Discs
         {
             _holder = holder;
             _isEmpty = false;
-            SetGuiColour(_holder.Colour);
+            _grid.DropAnimationAsync(this, _column, holder);
         }
 
         public void SetClickable(Color borderColour)
@@ -54,7 +60,16 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             _isClickable = false;
         }
 
-        private void SetGuiColour(Color colour) => _guiDisc.Fill = new SolidColorBrush(colour);
+        public async void TempColourChange(Color colour, int milliseconds)
+        {
+            SetGuiColour(colour);
+            await Task.Delay(milliseconds);
+            SetDefaultGuiColour();
+        }
+
+        private void SetDefaultGuiColour() => SetGuiColour(Colors.SlateGray);
+
+        public void SetGuiColour(Color colour) => _guiDisc.Fill = new SolidColorBrush(colour);
 
         private void MouseClick(object sender, MouseButtonEventArgs e)
         {

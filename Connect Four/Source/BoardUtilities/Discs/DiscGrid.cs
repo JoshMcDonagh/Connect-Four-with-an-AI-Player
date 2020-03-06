@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Media;
 using System.Windows.Shapes;
 
 namespace Connect_Four.Source.BoardUtilities.Discs
@@ -51,6 +52,23 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             }
 
             return available.ToArray();
+        }
+
+        public async void DropAnimationAsync(Disc callingDisc, int column, IPlayer holder)
+        {
+            int milliseconds = 50;
+
+            for (int i = 0; i < _rows; i++)
+            {
+                Disc disc = Get(column, i);
+                await Task.Delay(milliseconds);
+                if (disc.IsEmpty)
+                    disc.TempColourChange(holder.Colour, milliseconds);
+                else
+                    break;
+            }
+
+            callingDisc.SetGuiColour(holder.Colour);
         }
 
         private void InitialiseGuiGrid(Grid guiGrid)
@@ -109,7 +127,7 @@ namespace Connect_Four.Source.BoardUtilities.Discs
         private void MakeDiscData(Ellipse[][] guiDiscs, PlayerController players)
         {
             for (int i = 0; i < _rows; i++)
-                for (int j = 0; j < _columns; j++) _discs[i][j] = new Disc(guiDiscs[i][j], players);
+                for (int j = 0; j < _columns; j++) _discs[i][j] = new Disc(j, guiDiscs[i][j], players, this);
         }
     }
 }
