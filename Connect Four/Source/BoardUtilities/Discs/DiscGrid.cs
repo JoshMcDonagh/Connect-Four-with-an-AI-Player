@@ -41,7 +41,8 @@ namespace Connect_Four.Source.BoardUtilities.Discs
                 {
                     if (!Get(i, j).IsEmpty)
                     {
-                        available.Add(Get(i, j - 1));
+                        if (j > 0)
+                            available.Add(Get(i, j - 1));
                         break;
                     }
                     else if (j == _rows - 1)

@@ -11,6 +11,8 @@ namespace Connect_Four.Source.Players
         private IPlayer _player1;
         private IPlayer _player2;
         private IPlayer _currentPlayer;
+        public IPlayer Player1 => _player1;
+        public IPlayer Player2 => _player2;
         public IPlayer CurrentPlayer => _currentPlayer;
 
         public PlayerController(IPlayer player1, IPlayer player2, GameController gameController)

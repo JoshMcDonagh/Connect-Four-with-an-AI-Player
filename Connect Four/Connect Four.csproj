@@ -55,6 +55,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Source\EndGameStates\IEndGameState.cs" />
+    <Compile Include="Source\EndGameStates\TieEndGameState.cs" />
+    <Compile Include="Source\EndGameStates\WonEndGameState.cs" />
     <Compile Include="Source\GridController.cs" />
     <Compile Include="Source\BoardUtilities\Discs\Disc.cs" />
     <Compile Include="Source\BoardUtilities\Discs\DiscGrid.cs" />
