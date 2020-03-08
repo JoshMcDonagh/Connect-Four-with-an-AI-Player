@@ -18,5 +18,9 @@ namespace Connect_Four.Source.Players
         void SelectDisc(Disc[] discs);
 
         void SetSelectedDisc(Disc disc);
+
+        void SetAsCurrent();
+
+        void UnsetAsCurrent();
     }
 }

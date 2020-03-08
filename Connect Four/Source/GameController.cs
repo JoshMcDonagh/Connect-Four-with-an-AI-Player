@@ -38,15 +38,26 @@ namespace Connect_Four.Source
             IEndGameState endState = _grid.HasGameEnded(_players.Player1, _players.Player2);
 
             if (endState != null)
-                MessageBox.Show("Game ended.");
-
-            _players.CurrentPlayer.SelectDisc(_grid.GetAvailableDisks());
+                ProcessEndState(endState);
+            else
+                _players.CurrentPlayer.SelectDisc(_grid.GetAvailableDisks());
         }
 
         public void SubmitDisk(Disc disc)
         {
             _players.SwitchCurrentPlayer();
             Play();
+        }
+
+        private void ProcessEndState(IEndGameState state)
+        {
+            if (state.IsTie)
+            {
+                MessageBox.Show("Tie!");
+                return;
+            }
+
+            MessageBox.Show(((WonEndGameState)state).Winner.Name + " Won!");
         }
     }
 }

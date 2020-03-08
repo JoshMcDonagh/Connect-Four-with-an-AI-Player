@@ -8,5 +8,7 @@
         Title="Connect Four" Height="548.63" Width="457.26" ResizeMode="CanMinimize">
     <Grid Background="#FFB5E4FF">
         <Grid x:Name="guiGrid" HorizontalAlignment="Left" Height="388" Margin="10,10,0,0" VerticalAlignment="Top" Width="431"/>
+        <Label x:Name="player1label" Content="Player 1" HorizontalAlignment="Left" Margin="10,398,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Franklin Gothic Heavy"/>
+        <Label x:Name="player2label" Content="Player 2" HorizontalAlignment="Left" Margin="10,449,0,0" VerticalAlignment="Top" FontSize="36" FontFamily="Franklin Gothic Heavy"/>
     </Grid>
 </Window>

@@ -29,10 +29,13 @@ namespace Connect_Four.Source.Players
                 throw new NotImplementedException();
 
             _currentPlayer = player;
+            _currentPlayer.SetAsCurrent();
         }
 
         public void SwitchCurrentPlayer()
         {
+            _currentPlayer.UnsetAsCurrent();
+            
             if (CurrentPlayer == _player1)
                 UpdateCurrentPlayer(_player2);
             else
