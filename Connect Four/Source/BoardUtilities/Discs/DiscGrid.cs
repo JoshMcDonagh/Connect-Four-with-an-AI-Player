@@ -55,7 +55,7 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             return available.ToArray();
         }
 
-        public async void DropAnimationAsync(Disc callingDisc, int column, IPlayer holder)
+        public async void DropAnimationAsync(Disc callingDisc, int column, Player holder)
         {
             int milliseconds = 50;
 

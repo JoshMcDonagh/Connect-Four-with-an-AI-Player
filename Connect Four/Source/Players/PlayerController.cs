@@ -8,14 +8,14 @@ namespace Connect_Four.Source.Players
 {
     public class PlayerController
     {
-        private IPlayer _player1;
-        private IPlayer _player2;
-        private IPlayer _currentPlayer;
-        public IPlayer Player1 => _player1;
-        public IPlayer Player2 => _player2;
-        public IPlayer CurrentPlayer => _currentPlayer;
+        private Player _player1;
+        private Player _player2;
+        private Player _currentPlayer;
+        public Player Player1 => _player1;
+        public Player Player2 => _player2;
+        public Player CurrentPlayer => _currentPlayer;
 
-        public PlayerController(IPlayer player1, IPlayer player2, GameController gameController)
+        public PlayerController(Player player1, Player player2, GameController gameController)
         {
             _player1 = player1;
             _player2 = player2;
@@ -23,7 +23,7 @@ namespace Connect_Four.Source.Players
             UpdateCurrentPlayer(_player1);
         }
 
-        private void UpdateCurrentPlayer(IPlayer player)
+        private void UpdateCurrentPlayer(Player player)
         {
             if (CurrentPlayer == player)
                 throw new NotImplementedException();

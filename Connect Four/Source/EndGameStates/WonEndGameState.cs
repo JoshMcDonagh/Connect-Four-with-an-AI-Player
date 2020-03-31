@@ -11,9 +11,16 @@ namespace Connect_Four.Source.EndGameStates
     {
         public bool IsTie => false;
 
-        private IPlayer _winner;
-        public IPlayer Winner => _winner;
+        private Player _winner;
+        public Player Winner => _winner;
 
-        public WonEndGameState(IPlayer winner) => _winner = winner;
+        private Player _loser;
+        public Player Loser => _loser;
+
+        public WonEndGameState(Player winner, Player loser)
+        {
+            _winner = winner;
+            _loser = loser;
+        }
     }
 }

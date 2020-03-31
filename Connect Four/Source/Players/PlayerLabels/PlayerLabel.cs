@@ -14,10 +14,18 @@ namespace Connect_Four.Source.Players.PlayerLabels
         private Color _activeColour;
         private Color _inactiveColour = Colors.Gray;
 
+        public string Content
+        {
+            set => _label.Content = value;
+            get => (string)_label.Content;
+        }
+            
+
+
         public PlayerLabel(Label label, string text, Color colour)
         {
             _label = label;
-            _label.Content = text;
+            Content = text;
             _activeColour = colour;
             SetAsInactive();
         }

@@ -20,13 +20,13 @@ namespace Connect_Four.Source
         private const int _rows = 6;
         private const int _winningScore = 4;
 
-        public void SetPlayers(IPlayer player1, IPlayer player2) => _players = new PlayerController(player1, player2, this);
+        public void SetPlayers(Player player1, Player player2) => _players = new PlayerController(player1, player2, this);
 
         public void InitialiseBoard() => _grid = new GridController(_columns, _rows, _winningScore);
 
         public void SetGUIGrid(Grid guiGrid) => _grid.SetGUIBoard(guiGrid, _players);
 
-        public void Initialise(IPlayer player1, IPlayer player2, Grid guiGrid)
+        public void Initialise(Player player1, Player player2, Grid guiGrid)
         {
             SetPlayers(player1, player2);
             InitialiseBoard();
@@ -53,11 +53,23 @@ namespace Connect_Four.Source
         {
             if (state.IsTie)
             {
-                MessageBox.Show("Tie!");
+                Player player1 = _players.Player1;
+                player1.Label.Content = player1.Label.Content + "has tied...";
+                player1.Label.SetAsActive();
+
+                Player player2 = _players.Player2;
+                player2.Label.Content = player2.Label.Content + "has tied...";
+                player2.Label.SetAsActive();
+
                 return;
             }
 
-            MessageBox.Show(((WonEndGameState)state).Winner.Name + " Won!");
+            Player winner = ((WonEndGameState)state).Winner;
+            winner.Label.Content = winner.Label.Content + " has won!";
+            winner.Label.SetAsActive();
+
+            Player loser = ((WonEndGameState)state).Loser;
+            loser.Label.SetAsInactive();
         }
     }
 }

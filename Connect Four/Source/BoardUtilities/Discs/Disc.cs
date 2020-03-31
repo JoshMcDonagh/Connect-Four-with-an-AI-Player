@@ -16,8 +16,8 @@ namespace Connect_Four.Source.BoardUtilities.Discs
         private bool _isEmpty = true;
         public bool IsEmpty => _isEmpty;
 
-        private IPlayer _holder = null;
-        public IPlayer Holder => _holder;
+        private Player _holder = null;
+        public Player Holder => _holder;
 
         private Ellipse _guiDisc;
         public Ellipse GuiDisc => _guiDisc;
@@ -28,7 +28,6 @@ namespace Connect_Four.Source.BoardUtilities.Discs
         private DiscGrid _grid;
 
         private int _column;
-        private static System.Timers.Timer _delayTimer;
 
         public Disc(int column, Ellipse guiDisc, PlayerController players, DiscGrid grid)
         {
@@ -40,7 +39,7 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             _players = players;
         }
 
-        public void Select(IPlayer holder)
+        public void Select(Player holder)
         {
             _holder = holder;
             _isEmpty = false;

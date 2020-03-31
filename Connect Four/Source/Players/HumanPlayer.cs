@@ -11,40 +11,23 @@ using System.Windows.Media;
 
 namespace Connect_Four.Source.Players
 {
-    public class HumanPlayer : IPlayer
+    public class HumanPlayer : Player
     {
-        private string _name;
-        public string Name => _name;
-
-        private Color _colour;
-        public Color Colour => _colour;
-
-        public bool IsHuman => true;
+        public override bool IsHuman => true;
 
         private Disc[] _discCache;
 
-        private PlayerLabel _label;
-
-        private GameController _gameController;
-        public GameController GameController
+        public HumanPlayer(string name, Color colour, Label label) : base (name, colour, label)
         {
-            set => _gameController = value;
-        }
-
-        public HumanPlayer(string name, Color colour, Label label)
-        {
-            _name = name;
-            _colour = colour;
-            _label = new PlayerLabel(label, _name, _colour);
         }
 
         public void SetSelectedDisc(Disc disc)
         {
             MakeDiscsNotClickable(_discCache);
-            _gameController.SubmitDisk(disc);
+            GameController.SubmitDisk(disc);
         }
 
-        public void SelectDisc(Disc[] discs)
+        public override void SelectDisc(Disc[] discs)
         {
             _discCache = discs;
             MakeDiscsClickable(discs);
@@ -53,7 +36,7 @@ namespace Connect_Four.Source.Players
         private void MakeDiscsClickable(Disc[] discs)
         {
             foreach (Disc disc in discs)
-                disc.SetClickable(_colour);
+                disc.SetClickable(Colour);
         }
 
         private void MakeDiscsNotClickable(Disc[] discs)
@@ -62,8 +45,8 @@ namespace Connect_Four.Source.Players
                 disc.SetNotClickable();
         }
 
-        public void SetAsCurrent() => _label.SetAsActive();
+        public override void SetAsCurrent() => Label.SetAsActive();
 
-        public void UnsetAsCurrent() => _label.SetAsInactive();
+        public override void UnsetAsCurrent() => Label.SetAsInactive();
     }
 }

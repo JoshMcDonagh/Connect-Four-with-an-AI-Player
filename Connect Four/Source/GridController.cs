@@ -31,23 +31,23 @@ namespace Connect_Four.Source
 
         public Disc[] GetAvailableDisks() => _discs.GetAvailable();
 
-        public IEndGameState HasGameEnded(IPlayer player1, IPlayer player2)
+        public IEndGameState HasGameEnded(Player player1, Player player2)
         {
             if (GetAvailableDisks().Length == 0)
                 return new TieEndGameState();
 
             else if (HasPlayerWon(player1))
-                return new WonEndGameState(player1);
+                return new WonEndGameState(player1, player2);
 
             else if (HasPlayerWon(player2))
-                return new WonEndGameState(player2);
+                return new WonEndGameState(player2, player1);
 
             return null;
         }
 
-        private bool HasPlayerWon(IPlayer player) => CheckHorizontal(player) || CheckVertical(player) || CheckDiagonal(player);
+        private bool HasPlayerWon(Player player) => CheckHorizontal(player) || CheckVertical(player) || CheckDiagonal(player);
 
-        private bool CheckDiagonal(IPlayer player)
+        private bool CheckDiagonal(Player player)
         {
             for (int i = _rows - 1; i >= 0; i--)
             {
@@ -63,12 +63,12 @@ namespace Connect_Four.Source
             return false;
         }
 
-        private bool CheckDiagonalRun(IPlayer player, int column, int row)
+        private bool CheckDiagonalRun(Player player, int column, int row)
         {
             return RunUpLeft(player, column, row) || RunUpRight(player, column, row);
         }
 
-        private bool RunUpRight(IPlayer player, int column, int row)
+        private bool RunUpRight(Player player, int column, int row)
         {
             int count = 0;
             int i = row;
@@ -94,7 +94,7 @@ namespace Connect_Four.Source
             return false;
         }
 
-        private bool RunUpLeft(IPlayer player, int column, int row)
+        private bool RunUpLeft(Player player, int column, int row)
         {
             int count = 0;
             int i = row;
@@ -120,7 +120,7 @@ namespace Connect_Four.Source
             return false;
         }
         
-        private bool CheckHorizontal(IPlayer player)
+        private bool CheckHorizontal(Player player)
         {
             for (int i = _rows - 1; i >= 0; i--)
             {
@@ -144,7 +144,7 @@ namespace Connect_Four.Source
             return false;
         }
 
-        private bool CheckVertical(IPlayer player)
+        private bool CheckVertical(Player player)
         {
             for (int i = 0; i < _columns; i++)
             {

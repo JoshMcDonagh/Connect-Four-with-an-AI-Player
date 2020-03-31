@@ -63,7 +63,7 @@
     <Compile Include="Source\BoardUtilities\Discs\DiscGrid.cs" />
     <Compile Include="Source\GameController.cs" />
     <Compile Include="Source\Players\HumanPlayer.cs" />
-    <Compile Include="Source\Players\IPlayer.cs" />
+    <Compile Include="Source\Players\Player.cs" />
     <Compile Include="Source\Players\PlayerController.cs" />
     <Compile Include="Source\Players\PlayerLabels\PlayerLabel.cs" />
     <Page Include="MainWindow.xaml">
