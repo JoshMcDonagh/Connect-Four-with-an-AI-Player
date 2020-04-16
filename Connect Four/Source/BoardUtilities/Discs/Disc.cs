@@ -39,6 +39,18 @@ namespace Connect_Four.Source.BoardUtilities.Discs
             _players = players;
         }
 
+        public void StartTest(Player holder)
+        {
+            _holder = holder;
+            _isEmpty = false;
+        }
+
+        public void EndTest()
+        {
+            _holder = null;
+            _isEmpty = true;
+        }
+
         public void Select(Player holder)
         {
             _holder = holder;

@@ -32,7 +32,7 @@ namespace Connect_Four
         private void NewGame()
         {
             GameController gameController = new GameController();
-            gameController.Initialise(new HumanPlayer("Player 1", Colors.Red, player1label), new HumanPlayer("Player 2", Colors.Yellow, player2label), guiGrid);
+            gameController.Initialise(new HumanPlayer("Player 1", Colors.Red, player1label), new AIPlayer("Player 2", Colors.Yellow, player2label), guiGrid);
             gameController.Play();
         }
     }

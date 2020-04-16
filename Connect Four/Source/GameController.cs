@@ -31,6 +31,12 @@ namespace Connect_Four.Source
             SetPlayers(player1, player2);
             InitialiseBoard();
             SetGUIGrid(guiGrid);
+
+            if (!player1.IsHuman)
+                ((AIPlayer)player1).SetGridController(_grid);
+
+            if (!player2.IsHuman)
+                ((AIPlayer)player2).SetGridController(_grid);
         }
 
         public void Play()

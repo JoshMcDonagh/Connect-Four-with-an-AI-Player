@@ -45,6 +45,116 @@ namespace Connect_Four.Source
             return null;
         }
 
+        public int HorizontalCount(Player player)
+        {
+            int total = 0;
+            
+            for (int i = _rows - 1; i >= 0; i--)
+            {
+                int count = 0;
+
+                for (int j = 0; j < _columns; j++)
+                {
+                    Disc disc = _discs.Get(j, i);
+
+                    if (disc.Holder == player)
+                        count++;
+                    else
+                        break;
+                }
+
+                total = Math.Max(total, count);
+            }
+
+            return total;
+        }
+
+        public int VerticalCount(Player player)
+        {
+            int total = 0;
+            
+            for (int i = 0; i < _columns; i++)
+            {
+                int count = 0;
+
+                for (int j = _rows - 1; j >= 0; j--)
+                {
+                    Disc disc = _discs.Get(i, j);
+
+                    if (disc.Holder == player)
+                        count++;
+                    else
+                        break;
+                }
+
+                total = Math.Max(total, count);
+            }
+
+            return total;
+        }
+
+        public int DiagonalCount(Player player)
+        {
+            int total = 0;
+            
+            for (int i = _rows - 1; i >= 0; i--)
+            {
+                for (int j = 0; j < _columns; j++)
+                {
+                    Disc disc = _discs.Get(j, i);
+
+                    if (disc.Holder == player)
+                        total = Math.Max(total, CountUpRight(player, j, i) + CountUpLeft(player, j, i));
+                }
+            }
+
+            return total;
+        }
+
+        private int CountUpRight(Player player, int column, int row)
+        {
+            int count = 0;
+            int i = row;
+            int j = column;
+
+            while (i >= 0 && j < _columns)
+            {
+                Disc disc = _discs.Get(j, i);
+
+                if (disc.Holder == player)
+                    count++;
+                else
+                    return count;
+
+                i--;
+                j++;
+            }
+
+            return count;
+        }
+        
+        private int CountUpLeft(Player player, int column, int row)
+        {
+            int count = 0;
+            int i = row;
+            int j = column;
+
+            while (i >= 0 && j >= 0)
+            {
+                Disc disc = _discs.Get(j, i);
+
+                if (disc.Holder == player)
+                    count++;
+                else
+                    return count;
+
+                i--;
+                j--;
+            }
+
+            return count;
+        }
+
         private bool HasPlayerWon(Player player) => CheckHorizontal(player) || CheckVertical(player) || CheckDiagonal(player);
 
         private bool CheckDiagonal(Player player)
